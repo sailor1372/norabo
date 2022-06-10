@@ -1,5 +1,6 @@
 <?php
 #Test git 001
+#kakunin 002
   session_start();
 	if (isset( $_POST ['submit'])) {
 		$conn = mysqli_connect('localhost','sys3_itweb_g','w6AsjMem','sys3_itweb_g'); 
