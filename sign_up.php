@@ -114,7 +114,7 @@
                     </select>
             </div>
             <div class="form-footer">
-              <button type="submit" name ="submit" class="btn btn-primary w-100">Create new account</button>
+              <button type="submit" name ="submit" class="btn btn-primary w-100">アカウントを新規登録</button>
             </div>
           </div>
         </form>
