@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>norabo - room_1（マッチ待機）</title>
+	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/room.css">
+</head>
+
+<body>
+	<main class="room">
+		<h2 class="room__headline">マッチ中</h2>
+		<h3 class="room__userHeadline">リーダー</h3> <!-- 【!】リーダーになったユーザー（1人だけ） -->
+		<div class="room__user">
+			<!-- 【!】クリックでユーザーページに飛ぶ -->
+			<div class="room__user--icon">
+				<img class="room__user--icon--img" src="" alt="/"> <!-- 【!】アイコン -->
+			</div>
+			<div class="room__user--info">
+				<span class="room__user--info--gender">♀</span> <!-- 【!】性別 -->
+				<span class="room__user--info--name">ruka</span> <!-- 【!】名前 -->
+				<ul class="room__user--info--support">
+					<li><img src="" alt="/" class="room__user--info--support--pf"></li> <!-- 【!】対応プラットフォームのアイコン -->
+					<li><img src="" alt="/" class="room__user--info--support--vc"></li> <!-- 【!】対応VCツールのアイコン -->
+					<!-- 【!】登録pf/vcのstringをsvgの名前として組み込んでアイコンを表示させたいです！ -->
+				</ul>
+			</div>
+			<div class="room__user--dummy">準備完了</div> <!-- 準備完了のダミーボタン -->
+		</div>
+		<h3 class="room__userHeadline">メンバー</h3> <!-- 【!】マッチ済の他のユーザー（2人まで） -->
+		<div class="room__user">
+			<div class="room__user--icon">
+				<img class="room__user--icon--img" src="" alt="/">
+			</div>
+			<div class="room__user--info">
+				<span class="room__user--info--gender">♀</span>
+				<span class="room__user--info--name">manami</span>
+				<ul class="room__user--info--support">
+					<li><img src="" alt="/" class="room__user--info--support--pf"></li>
+					<li><img src="" alt="/" class="room__user--info--support--vc"></li>
+				</ul>
+			</div>
+			<div class="room__user--dummy">準備完了</div>
+		</div>
+		<div class="room__searching">探しています…</div> <!-- 【!】マッチ中、探している人数（2人まで） -->
+		<button class="room__exit">マッチを退出する</button>
+	</main>
+	<div>
+		<!-- マッチングの退出モーダル -->
+		<h3>このマッチから退出しますか？</h3>
+		<p>再度マッチングする場合、時間がかかる場合があります。</p>
+		<a href="index.html">退出する</a>
+		<button>退出しない</button>
+	</div>
+	<!-- 【!】マッチが完了すると、room_2.htmlに自動的に遷移する -->
+</body>
+
+</html>

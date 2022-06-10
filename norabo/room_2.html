@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>norabo - room_2（マッチ済）</title>
+	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/room.css">
+</head>
+
+<body>
+	<main class="room">
+		<h2 class="room__headline">準備中</h2>
+		<h3 class="room__userHeadline">リーダー</h3>
+		<div class="room__user">
+			<div class="room__user--icon">
+				<img class="room__user--icon--img" src="" alt="/">
+			</div>
+			<div class="room__user--info">
+				<span class="room__user--info--gender">♀</span>
+				<span class="room__user--info--name">ruka</span>
+				<ul class="room__user--info--support">
+					<li><img src="" alt="/" class="room__user--info--support--pf"></li>
+					<li><img src="" alt="/" class="room__user--info--support--vc"></li>
+				</ul>
+			</div>
+			<div class="room__user--done">準備完了</div>
+			<!-- 【！】準備完了が動くボタンになる。タップするとクラスが .room__user--done--on に変わる -->
+		</div>
+		<h3 class="room__userHeadline">メンバー</h3>
+		<div class="room__user">
+			<div class="room__user--icon">
+				<img class="room__user--icon--img" src="" alt="/">
+			</div>
+			<div class="room__user--info">
+				<span class="room__user--info--gender">♀</span>
+				<span class="room__user--info--name">manami</span>
+				<ul class="room__user--info--support">
+					<li><img src="" alt="/" class="room__user--info--support--pf"></li>
+					<li><img src="" alt="/" class="room__user--info--support--vc"></li>
+				</ul>
+			</div>
+			<div class="room__user--done">準備完了</div>
+		</div>
+		<div class="room__user">
+			<div class="room__user--icon">
+				<img class="room__user--icon--img" src="" alt="/">
+			</div>
+			<div class="room__user--info">
+				<span class="room__user--info--gender">♀</span>
+				<span class="room__user--info--name">shimizu</span>
+				<ul class="room__user--info--support">
+					<li><img src="" alt="/" class="room__user--info--support--pf"></li>
+					<li><img src="" alt="/" class="room__user--info--support--vc"></li>
+				</ul>
+			</div>
+			<div class="room__user--done--on">準備完了</div>
+			<!-- 準備完了を押した時はこういうイメージです。 -->
+		</div>
+		<button class="room__exit">マッチを退出する</button>
+	</main>
+	<div>
+		<!-- マッチングの退出モーダル -->
+		<h3>このマッチから退出しますか？</h3>
+		<p>再度マッチングする場合、時間がかかる場合があります。</p>
+		<a href="index.html">退出する</a>
+		<button>退出しない</button>
+	</div>
+	<!-- 【!】 全員準備完了になると、room_3.htmlに自動的に遷移する -->
+</body>
+
+</html>
