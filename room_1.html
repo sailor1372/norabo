@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>norabo - room_1（マッチ待機）</title>
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/room.css">
+</head>
+
+<body>
+    <main class="room">
+        <h2 class="room__headline">マッチ中</h2>
+        <h3 class="room__userHeadline">リーダー</h3>
+        <!-- 【!】リーダーになったユーザー（1人だけ） -->
+        <div class="room__user">
+            <!-- 【!】クリックでユーザーページに飛ぶ -->
+            <div class="room__user--icon">
+                <img class="room__user--icon--img" src="" alt="/">
+                <!-- 【!】アイコン -->
+            </div>
+            <div class="room__user--info">
+                <span class="room__user--info--gender">♀</span>
+                <!-- 【!】性別 -->
+                <span class="room__user--info--name">ruka</span>
+                <!-- 【!】名前 -->
+            </div>
+            <ul class="room__user--support">
+                <!-- 【!】対応プラットフォームのアイコン -->
+                <li class="room__user--support--icon">
+                    <img src="img/pf_ps.svg" alt="プラットフォーム:PS" class="room__user--support--pf">
+                </li>
+                <!-- 【!】対応VCツールのアイコン -->
+                <li class="room__user--support--icon">
+                    <img src="img/vc_discord.svg" alt="VC:Discord" class="room__user--support--vc">
+                </li>
+                <!-- 【!】登録pf/vcのstringをsvgと対応させてアイコンを組み込みたいです！ -->
+            </ul>
+            <!-- 準備完了のダミーボタン -->
+            <div class="room__user--dummy">準備完了</div>
+        </div>
+        <h3 class="room__userHeadline">メンバー</h3>
+        <!-- 【!】マッチ済の他のユーザー（2人まで） -->
+        <div class="room__user">
+            <div class="room__user--icon">
+                <img class="room__user--icon--img" src="" alt="/">
+            </div>
+            <div class="room__user--info">
+                <span class="room__user--info--gender">♀</span>
+                <span class="room__user--info--name">manami</span>
+            </div>
+            <ul class="room__user--support">
+                <li class="room__user--support--icon">
+                    <img src="img/pf_ps.svg" alt="プラットフォーム:PS" class="room__user--support--pf">
+                </li>
+                <li class="room__user--support--icon">
+                    <img src="img/vc_discord.svg" alt="VC:Discord" class="room__user--support--vc">
+                </li>
+            </ul>
+            <div class="room__user--dummy">準備完了</div>
+        </div>
+        <!-- 【!】マッチ中、探している人数分表示（2人まで） -->
+        <div class="room__searching">探しています…</div>
+        <button class="room__exit">マッチを退出する</button>
+    </main>
+    <div>
+        <!-- マッチングの退出モーダル -->
+        <h3>このマッチから退出しますか？</h3>
+        <p>再度マッチングする場合、時間がかかる場合があります。</p>
+        <a href="index.html">退出する</a>
+        <button>退出しない</button>
+    </div>
+    <!-- 【!】マッチが完了すると、room_2.htmlに自動的に遷移する -->
+</body>
+
+</html>

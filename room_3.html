@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<!-- 
+
+    コウさん、トアンさん
+
+    <div class="room__user">
+        <div class="room__user--icon">
+            <img class="room__user--icon--img" src="" alt="/">
+        </div>
+        <div class="room__user--info">
+            <span class="room__user--info--gender">♀</span>
+            <span class="room__user--info--name">ruka</span>
+            <ul class="room__user--info--support">
+                <li><img src="" alt="/" class="room__user--info--support--pf"></li>
+                <li><img src="" alt="/" class="room__user--info--support--vc"></li>
+            </ul>
+        </div>
+        <div class="room__user--done">準備完了</div>
+    </div>
+
+    から、
+
+    <div class="room__user">
+        <div class="room__user--icon">
+            <img class="room__user--icon--img" src="" alt="/">
+        </div>
+        <div class="room__user--info">
+        // .room__user--info に入るのは性別と名前だけ
+    <span class="room__user--info--gender">♀</span>
+    <span class="room__user--info--name">manami</span>
+    </div>
+    <ul class="room__user--support">
+        //support が独立
+    <div class="room__user--support--icon">
+        <li><img src="img/pf_ps.svg" alt="プラットフォーム:PS" class="room__user--support--pf"></li>
+    </div>
+    <div class="room__user--support--icon">
+        <li><img src="img/vc_discord.svg" alt="VC:Discord" class="room__user--support--vc"></li>
+    </div>
+    </ul>
+    <div class="room__user--done">準備完了</div>
+    </div>
+
+    にHTMLをすべて（room_1, 2も）変更しています。
+    階層が深くなりすぎていたことの修正です。
+    
+    手間おかけしますが対応いただけると幸いです、よろしくお願いします、、
+
+-->
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>norabo - room_3（準備完了済）</title>
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/room.css">
+</head>
+
+<body>
+    <main class="room">
+        <h3 class="room__userHeadline">リーダー</h3>
+        <div class="room__user">
+            <div class="room__user--icon">
+                <img class="room__user--icon--img" src="" alt="/">
+            </div>
+            <div class="room__user--info">
+                <span class="room__user--info--gender">♀</span>
+                <span class="room__user--info--name">ruka</span>
+            </div>
+            <ul class="room__user--support">
+                <li>
+                    <div class="room__user--support--icon"><img src="img/pf_pc.svg" alt="プラットフォーム:PC"></div>
+                    <p>sample-id-pc-001</p>
+                    <div class="room__user--support--icon"><img src="img/icon_copy.svg" alt="IDをコピー"></div>
+                </li>
+                <li>
+                    <div class="room__user--support--icon"><img src="img/vc_discord.svg" alt="VC:Discord"></div>
+                    <p>sample-id-discord-002</p>
+                    <div class="room__user--support--icon"><img src="img/icon_copy.svg" alt="IDをコピー"></div>
+                </li>
+            </ul>
+            <div class="room__user--block"><img src="img/icon_block.svg" alt="/"></div>
+        </div>
+        <h3 class="room__userHeadline">メンバー</h3>
+        <div class="room__user">
+            <div class="room__user--icon">
+                <img class="room__user--icon--img" src="" alt="/">
+            </div>
+            <div class="room__user--info">
+                <span class="room__user--info--gender">♀</span>
+                <span class="room__user--info--name">manami</span>
+            </div>
+            <ul class="room__user--support">
+                <li>
+                    <div class="room__user--support--icon"><img src="img/pf_pc.svg" alt="プラットフォーム:PC"></div>
+                    <p>sample-id-pc-001</p>
+                    <div class="room__user--support--icon"><img src="img/icon_copy.svg" alt="IDをコピー"></div>
+                </li>
+                <li>
+                    <div class="room__user--support--icon"><img src="img/vc_discord.svg" alt="VC:Discord"></div>
+                    <p>sample-id-discord-002</p>
+                    <div class="room__user--support--icon"><img src="img/icon_copy.svg" alt="IDをコピー"></div>
+                </li>
+            </ul>
+            <div class="room__user--block"><img src="img/icon_block.svg" alt="/"></div>
+        </div>
+        <div class="room__user blocked">
+            <!-- ブロック中 -->
+            <div class="blocked__text">このユーザーをブロックしています</div>
+            <div class="room__user--icon">
+                <img class="room__user--icon--img" src="" alt="/">
+            </div>
+            <div class="room__user--info">
+                <span class="room__user--info--gender">♀</span>
+                <span class="room__user--info--name">shimizu</span>
+            </div>
+            <ul class="room__user--support">
+                <li>
+                    <div class="room__user--support--icon"><img src="img/pf_pc.svg" alt="プラットフォーム:PC"></div>
+                    <p>sample-id-pc-001</p>
+                    <div class="room__user--support--icon"><img src="img/icon_copy.svg" alt="IDをコピー"></div>
+                </li>
+                <li>
+                    <div class="room__user--support--icon"><img src="img/vc_discord.svg" alt="VC:Discord"></div>
+                    <p>sample-id-discord-002</p>
+                    <div class="room__user--support--icon"><img src="img/icon_copy.svg" alt="IDをコピー"></div>
+                </li>
+            </ul>
+            <div class="room__user--block"><img src="img/icon_block.svg" alt="/"></div>
+        </div>
+        <button class="room__exit">ホームに戻る</button>
+    </main>
+    <!-- マッチング終了 -->
+    <div class="room__exit">IDをコピーしました</div>
+    <div>このユーザーをブロックする</div>
+    <!-- ユーザーに対するアクションモーダル。…をタップで表示 -->
+    <div class="room__block">
+        <!-- ユーザーのブロックモーダル -->
+        <h3>本当にこのユーザーをブロックしますか？</h3>
+        <p>ブロックすると<span class="room__block--userName">ユーザー名</span>と2度とマッチングしなくなりますが、本当によろしいですか？
+        </p>
+        <button>ブロックする</button>
+        <button>ブロックしない</button>
+    </div>
+    <div class="room__back">
+        <!-- ホームに戻るを押すと出るモーダル -->
+        <h3>フレンド登録は完了しましたか？</h3>
+        <p>ホームに戻るとマッチングが終了します。マッチングは履歴からも確認できます。</p>
+        <a href="index.html">ホームに戻る</a>
+        <button>キャンセル</button>
+    </div>
+</body>
+
+</html>

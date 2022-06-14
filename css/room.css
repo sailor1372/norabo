@@ -1,0 +1,148 @@
+.room {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+.room__headline {
+    margin: 0 auto 16px;
+}
+
+.room__userHeadline {
+    width: 100%;
+    margin: 24px auto 16px;
+}
+
+.room__user {
+    display: grid;
+    grid-template-columns: 80px auto auto;
+    grid-template-rows: auto auto;
+    background: #eee;
+    border-radius: 9999px;
+    margin: 0 0 8px;
+    padding: 8px;
+}
+
+.room__user--icon {
+    grid-column: 1;
+    grid-row: 1/3;
+    width: 80px;
+    height: 80px;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.room__user--icon--img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.room__user--info {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.room__user--support {
+    /* display: flex; */
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.room__user--support--icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.room__user--support--icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.room__user--support>li {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 24px;
+}
+
+.room__user--dummy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    color: #fff;
+    background: #ccc;
+    margin: 0 0 0 auto;
+    padding: 0 16px;
+    border-radius: 9999px;
+}
+
+.room__user--done {
+    grid-column: 3;
+    grid-row: 1/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    color: tomato;
+    background: #fff;
+    border: 1px solid tomato;
+    margin: 0 0 0 auto;
+    padding: 0 16px;
+    border-radius: 9999px;
+}
+
+.blocked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+}
+
+.blocked__text {
+    color: #fff;
+    position: absolute;
+    z-index: 10;
+}
+
+.room__user--done--on {
+    grid-column: 3;
+    grid-row: 1/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    color: #fff;
+    background: tomato;
+    border: 1px solid tomato;
+    margin: 0 8px 0 auto;
+    padding: 0 16px;
+    border-radius: 9999px;
+}
+
+.room__searching {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 72px;
+    border: 1px solid #ccc;
+    border-radius: 9999px;
+}
+
+.room__exit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eee;
+    margin: auto auto 0;
+    padding: 16px 48px;
+    border-radius: 9999px;
+}
