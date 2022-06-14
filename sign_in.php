@@ -8,13 +8,14 @@
 		mysqli_query($conn,"set names utf8"); 
 		$email = $_POST['email'];
 		$pw = $_POST['pw'];
-		$sql = "SELECT * FROM USER WHERE EMAIL = '$email'";
+		//$hash_password = password_hash($pw, PASSWORD_DEFAULT);
+		$sql = "SELECT * FROM DB_USER WHERE EMAIL = '$email'";
 		$result = $conn->query($sql);
+		echo "<script>alert(".$pw.")</script>";
 		if ($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
-				$checkpassword = $row["PW"];
-				
-				if(password_verify($pw, $checkpassword) || $pw == $checkpassword){
+				$checkpassword = $row["PW"];				
+				if($pw == $checkpassword){
 					$id = $row['ID'];  
 					$nick_name = $row["NICK_NAME"];
 					$email = $row["EMAIL"];
@@ -29,7 +30,7 @@
 					$_SESSION['gender'] = $gender;
 					$_SESSION['img'] = $img;
 
-					echo "<script>parent.location.href='Home.php';</script>";
+					echo "<script>parent.location.href='home.php';</script>";
 				}else{
 					echo "<script>alert('パスワードが間違えた')</script>";
 				}
@@ -61,19 +62,19 @@
         <div class="text-center mb-4">
           <a href="."><img src="./static/logo.svg" height="150" alt=""></a>
         </div>
-        <form class="card card-md"  method="POST" action="./Sign-In.php">
+        <form class="card card-md"  method="POST" action="./sign_in.php">
           <div class="card-body">
             <h2 class="card-title text-center mb-4">Login to your account</h2>
             <div class="mb-3">
               <label class="form-label">Email address</label>
-              <input type="email" name="email" class="form-control" placeholder="Enter email" value = "1@ecc.ac.jp">
+              <input type="email" name="email" class="form-control" placeholder="Enter email" value = "12@ecc.ac.jp">
             </div>
 				<div class="mb-2">
 					<label class="form-label">
 					  パスワード
 					</label>
 					<div class="input-group input-group-flat">
-					  <input type="pw" name = "pw" class="form-control"  placeholder="Password"  autocomplete="off" value = "1">
+					  <input type="pw" name = "pw" class="form-control"  placeholder="Password"  autocomplete="off" value = "$2y$10$oX6vOXYE/lYMx">
 					</div>
 					<small class="form-hint">
 						テストのため、ユーザーとパスワードが提供されました、<br>
