@@ -15,18 +15,20 @@
 				$checkpassword = $row["PW"];
 				
 				if(password_verify($pw, $checkpassword) || $pw == $checkpassword){
-					$name = $row["USER_NAME"];
-					$position = $row["POSITION"];
-					$image = $row["IMAGE"];
-					$user_id = $row["USER_ID"];
-					$permission = $row["Permission"];
+					$id = $row['ID'];  
+					$nick_name = $row["NICK_NAME"];
+					$email = $row["EMAIL"];
+					$gender = $row['GENDER'];
+					$age = $row['AGE'];
+					$img = $row["IMG"];              
 					
+					$_SESSION['id'] = $id;
 					$_SESSION['email'] = $email;
-					$_SESSION['name'] = $name;
-					$_SESSION['permission'] = $permission;
-					$_SESSION['position'] = $position;
-					$_SESSION['image'] = $image;
-					$_SESSION['user_id'] = $user_id;
+					$_SESSION['nick_name'] = $nick_name;
+					$_SESSION['age'] = $age;
+					$_SESSION['gender'] = $gender;
+					$_SESSION['img'] = $img;
+
 					echo "<script>parent.location.href='Home.php';</script>";
 				}else{
 					echo "<script>alert('パスワードが間違えた')</script>";
@@ -83,7 +85,7 @@
           </div>
         </form>
         <div class="text-center text-muted mt-3">
-          Don't have account yet? <a href="./sign_up.php" tabindex="-1">Sign up</a>
+          NORABOに交流しよう！ <a href="./sign_up.php" tabindex="-1">Sign up</a>
         </div>
       </div>
     </div>
