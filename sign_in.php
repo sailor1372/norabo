@@ -59,7 +59,7 @@
     <div class="page page-center">
       <div class="container-tight py-4">
         <div class="text-center mb-4">
-          <a href="."><img src="./static/ssi.svg" height="36" alt=""></a>
+          <a href="."><img src="./static/logo.svg" height="150" alt=""></a>
         </div>
         <form class="card card-md"  method="POST" action="./Sign-In.php">
           <div class="card-body">
@@ -76,7 +76,7 @@
 					  <input type="pw" name = "pw" class="form-control"  placeholder="Password"  autocomplete="off" value = "1">
 					</div>
 					<small class="form-hint">
-						実演のため、ユーザーとパスワード提供されました、<br>ご安心に使ってください。
+						テストのため、ユーザーとパスワードが提供されました、<br>
 					</small>
 				 </div>
             <div class="form-footer">
