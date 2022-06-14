@@ -3,7 +3,7 @@
 	if (isset( $_POST ['submit'])) {
         $conn = mysqli_connect('localhost','sys3_itweb_g','w6AsjMem','sys3_itweb_g'); 
 		if (mysqli_connect_errno($conn)) { 
-			die("连接 MySQL 失败: " . mysqli_connect_error()); 
+			die("DB Error:  " . mysqli_connect_error()); 
 		}
 		mysqli_query($conn,"set names utf8"); 
 		$email = $_POST['email'];
