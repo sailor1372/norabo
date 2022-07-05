@@ -13,17 +13,17 @@
 			$email = $_POST ['email'];
 			$nick_name = $_POST ['nick_name'];
 			$age = $_POST ['age'];    
-            $pw = $_POST ['pw'];
-            $hash_password = password_hash($pw, PASSWORD_DEFAULT);
-            $gender = $_POST['gender'];
+      $pw = $_POST ['pw'];
+      $hash_password = password_hash($pw, PASSWORD_DEFAULT);
+      $gender = $_POST['gender'];
 
 			$sql = "SELECT * FROM DB_USER WHERE EMAIL = '$email'";
 			$result = $conn->query($sql);
 			if ($result->num_rows > 0) {
 				echo "<script>alert('ユーザーは存在します。')</script>";
 			}else{
-                $img = "./static/img/e1";
-				$sql = "INSERT INTO DB_USER (EMAIL,NICK_NAME,AGE,PW,GENDER,IMG) VALUES ('$email','$nick_name','$age','$hash_password','$gender','$img')";
+        $img = "./static/img/e1";
+				$sql = "INSERT INTO DB_USER (EMAIL,NICK_NAME,AGE,PW,GENDER, DATE, IMG) VALUES ('$email','$nick_name','$age','$hash_password','$gender',NOW(),'$img')";
 				if ($conn->query($sql) === TRUE) {
           $sql = "SELECT * FROM DB_USER WHERE EMAIL = '$email'";
           $result = $conn->query($sql);
@@ -115,12 +115,12 @@
                     </select>
             </div>
             <div class="form-footer">
-              <button type="submit" name ="submit" class="btn btn-primary w-100">アカウントを新規登録</button>
+              <button type="submit" name ="submit" class="btn btn-primary w-100">新規登録</button>
             </div>
           </div>
         </form>
         <div class="text-center text-muted mt-3">
-          Already have account? <a href="./sign_in.php" tabindex="-1">Sign in</a>
+          アカウントをお持ちでしょうか <a href="./sign_in.php" tabindex="-1">Sign in</a>
         </div>
       </div>
     </div>
