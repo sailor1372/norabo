@@ -3,7 +3,7 @@
     $conn = mysqli_connect('localhost', 'sys3_itweb_g', 'w6AsjMem', 'sys3_itweb_g');
     $conn->query("set names'utf8'");
     $conn->set_charset('utf8_general_ci');
-    $usr_id = $_SESSION['id'];
+    $user_id = $_SESSION['user_id'];
 
     if($_FILES["file"]["error"]){
         echo $_FILES["file"]["error"];
@@ -17,7 +17,7 @@
             
             move_uploaded_file($_FILES["file"]["tmp_name"],$filename1);
 
-            $sql="UPDATE DB_USER SET IMG = '$imgname' WHERE ID = '$usr_id'";
+            $sql="UPDATE DB_USER SET IMG = '$imgname' WHERE USER_ID = '$user_id'";
             if($conn->query($sql)){
                 $_SESSION['img'] = $imgname;
                 echo "<script> parent.location.href='profile_account.php'; </script>";

@@ -3,14 +3,12 @@ session_start();
 if (empty($_SESSION['email'])) {
   echo "<script> parent.location.href='sign_in.php'; </script>";
 } else {
-  $id = $_SESSION['id'];
+  $user_id = $_SESSION['user_id'];
   $email = $_SESSION['email'];
   $nick_name = $_SESSION['nick_name'];
   $age = $_SESSION['age'];
   $gender = $_SESSION['gender'];
-  $img =  $_SESSION['img'];  
- 
-
+  $img =  $_SESSION['img'];
   ///session ok
 }
 $sql_select = "	SELECT * FROM DB_USER";
@@ -59,42 +57,47 @@ $conn->close();
                 <div class="row g-2 align-items-center">
                   <div class="col-3 col-sm-4 col-md-2 col-xl pt-3">
                     <a href="./home.php?pc">
-                    <button class="btn btn-yellow btn-pill w-100" name="btn_pc">
-                      PC
-                    </button>
+                      <button class="btn btn-yellow btn-pill w-100" name="btn_pc">
+                        PC
+                      </button>
                     </a>
                   </div>
                   <div class="col-3 col-sm-4 col-md-2 col-xl pt-3">
-                  <a href="./home.php?ps4">
-                    <button class="btn btn-primary btn-pill w-100" name="btn_ps4">
-                      PS4
-                    </button>
+                    <a href="./home.php?ps4">
+                      <button class="btn btn-primary btn-pill w-100" name="btn_ps4">
+                        PS4
+                      </button>
                     </a>
                   </div>
                   <div class="col-3 col-sm-4 col-md-2 col-xl pt-3">
-                  <a href="./home.php?xbox">
-                    <button class="btn btn-success btn-pill w-100" name="btn_xbox">
-                      XBOX
-                    </button>
+                    <a href="./home.php?xbox">
+                      <button class="btn btn-success btn-pill w-100" name="btn_xbox">
+                        XBOX
+                      </button>
                     </a>
                   </div>
                   <div class="col-3 col-sm-4 col-md-2 col-xl pt-3">
-                  <a href="./home.php?">
-                    <button class="btn btn-secondary btn-pill w-100" name="btn_vic">
-                      勝ち
-                    </button>
+                    <a href="./home.php?">
+                      <button class="btn btn-secondary btn-pill w-100" name="btn_vic">
+                        勝ち
+                      </button>
                     </a>
                   </div>
                   <div class="col-3 col-sm-4 col-md-2 col-xl pt-3">
-                  <a href="./home.php?">
-                    <button class="btn btn-secondary btn-pill w-100" name="btn_same">
-                      同性
-                    </button>
+                    <a href="./home.php?">
+                      <button class="btn btn-secondary btn-pill w-100" name="btn_same">
+                        同性
+                      </button>
                     </a>
                   </div>
-
+                  <div class="col-3 col-sm-4 col-md-2 col-xl pt-3">
+                    <a href="./home.php?pri">
+                      <button class="btn btn-secondary btn-pill w-100" name="btn_priroom">
+                        マイルーム
+                      </button>
+                    </a>
+                  </div>
               </h1>
-
               <div class="navbar-nav flex-row order-md-last">
                 <div class="nav-item dropdown">
                   <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
@@ -122,15 +125,16 @@ $conn->close();
           <div class="page-body">
             <div class="row row-cards">
               <div class="row g-2 align-items-center">
-
-
                 <?php
                 $platform = $_SERVER["QUERY_STRING"];
-                if($platform != ""){
+                if ($platform != "") {
                   $sql_select =  "	SELECT * FROM HOME_ROOM WHERE PLATFORM = '$platform'";
-                }else{
+                } elseif($platform == "pri"){
+                  $sql_select =  "	SELECT * FROM HOME_ROOM WHERE ";
+                
+                }else {
                   $sql_select = "	SELECT * FROM HOME_ROOM";
-                }               
+                }
                 $conn = mysqli_connect('localhost', 'sys3_itweb_g', 'w6AsjMem', 'sys3_itweb_g');
                 if (mysqli_connect_errno($conn)) {
                   die("DB Error " . mysqli_connect_error());
@@ -147,20 +151,18 @@ $conn->close();
                     $FILTER = $row['FILTER'];
                     $CLIENT_USER = $row['CLIENT_USER'];
                     $DATE = $row['DATE'];
-
                     echo '
                 <div class="col-lg-6">
                   <div class="card">
                     <div class="card-header">
                       ' . $GAME;
-
                     if ($PLATFORM == "PS4") {
                       echo '<a href="#" class="badge badge-outline text-blue">PS4</a>';
                     } elseif ($PLATFORM == "PC") {
                       echo '<a href="#" class="badge badge-outline text-orange">PC</a>';
                     } elseif ($PLATFORM == "XBOX") {
                       echo '<a href="#" class="badge badge-outline text-green">XBOX</a>';
-                    } 
+                    }
                     //FILTER = "000" 同性、スタイル、ランク
                     if (substr($FILTER, 0, 1) == "1") {
                       echo ' <a href="#" span class="badge badge-outline text-yellow">同性</a>';
@@ -175,7 +177,7 @@ $conn->close();
                         <div class="card-body">
                           <h3 class="card-title">' . $TITLE . '</h3>
                           <p class="text-muted">' . $M_TEXT . '</p>
-                          <a href="./room.php?'.$R_ID.'" class="btn btn-primary">参加する</a>
+                          <a href="./room.php?' . $R_ID . '" class="btn btn-primary">参加する</a>
                         </div>
                         <div class="card-footer text-muted">
                           <div>
@@ -187,9 +189,6 @@ $conn->close();
                     </div>
                   </div>
                 </div>
-                
-                
-                
                 ';
                   }
                 }
@@ -209,7 +208,7 @@ $conn->close();
                     <form method="post" id="mk_room">
                       <label class="form-label">フラットフォーム</label>
                       <div class="form-selectgroup">
-                        <input id="user_hidden" type="hidden" value="<?php echo $id ?>">
+                        <input id="user_hidden" type="hidden" value="<?php echo $user_id ?>">
                         <label class="form-selectgroup-item">
                           <input type="radio" name="platt" value="PC" class="form-selectgroup-input" checked>
                           <span class="form-selectgroup-label">PC</span>
@@ -259,28 +258,18 @@ $conn->close();
                         <option value="4">ダイヤ</option>
                         <option value="5">マスター・プレデター</option>
                       </select>
-
-                      <!-- もし生成物されているルームがないと自分で生成する案内ページを表示
-							<h3 class="index__modal--form--headline">ルーム名（あなたのホームに表示されます）</h3>
-							<input type="text" placeholder="例:楽しくプレイする" class="index__modal--form--text"> -->
-                      <!-- 【!】すべてのデータを保管できるように実装をお願いします。 -->
                       <a href="#" id="r_serch" class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#modal-danger">参加</a>
-                      <!--【!】すべてのデータを保管できるように実装をお願いします。 -->
                     </form>
                   </div>
                 </div>
               </div>
             </div>
-
-
-
             <div class="modal modal-blur fade" id="modal-danger" tabindex="-1" role="dialog" aria-hidden="true">
               <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   <div class="modal-status bg-danger"></div>
                   <div class="modal-body text-center py-4">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/alert-triangle -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M12 9v2m0 4v.01" />
@@ -307,10 +296,6 @@ $conn->close();
                 </div>
               </div>
             </div>
-
-
-
-
             <div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
               <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -338,9 +323,7 @@ $conn->close();
                     <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
                       キャンセル
                     </a>
-                    <!--  <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal"> -->
                     <button type="submit" id="make_click" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
-                      <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <line x1="12" y1="5" x2="12" y2="19" />
@@ -378,6 +361,9 @@ $conn->close();
       $(document).on('click', 'button[name="btn_same"]', function() {
         //alert("同性");
       });
+      $(document).on('click', 'button[name="btn_priroom"]', function() {
+        //
+      });      
       ////
       $(document).on('click', '#make_click', function() {
         if ($('#rank').val() == "") {
@@ -431,14 +417,7 @@ $conn->close();
           });
         }
       });
-
-
-
-
-
     });
   </script>
-
 </body>
-
 </html>

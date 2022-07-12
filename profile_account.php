@@ -3,13 +3,12 @@ session_start();
 if (empty($_SESSION['email'])) {
     echo "<script> parent.location.href='sign_in.php'; </script>";
 } else {
-    $id = $_SESSION['id'];
+    $user_id = $_SESSION['user_id'];
     $email = $_SESSION['email'];
     $nick_name = $_SESSION['nick_name'];
     $age = $_SESSION['age'];
     $gender = $_SESSION['gender'];
     $img =  $_SESSION['img'];
-
     ///session ok
 }
 $sql_select = "	SELECT * FROM DB_USER";
@@ -22,14 +21,12 @@ $result_select = mysqli_query($conn, $sql_select);
 if ($result_select->num_rows > 0) {
   while ($row = $result_select->fetch_assoc()) {
     $IMG = $row['IMG'];
-
   }
 }
 $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,10 +42,8 @@ $conn->close();
     <link href="./dist/css/tabler-vendors.min.css" rel="stylesheet" />
     <link href="./dist/css/demo.min.css" rel="stylesheet" />
 </head>
-
 <body>
     <main class="index">
-        <!-- head 後ほど作成 -->
         <div style="text-align:center ;">
             <a href="./home.php"><img src="./static/logo.svg" height="120" alt=""></a>
         </div>
@@ -56,14 +51,11 @@ $conn->close();
         <a href="#" data-bs-toggle="modal" data-bs-target="#modal-report">
             <span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(./static/usr/<?php echo $IMG ?>)"></span>
         </a>
-        <h3>ユーザID : <?php echo $id ?></h3>
+        <h3>ユーザID : <?php echo $user_id ?></h3>
         <h3>メールアドレス : <?php echo $email ?></h3>
         <h3>ニックネーム : <?php echo $nick_name ?></h3>
         <h3>世代 : <?php echo $age ?></h3>
         <h3>性別 : <?php echo $gender ?></h3>
-
-
-
         <div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <form action="user_change.php" method="post" enctype="multipart/form-data">
@@ -88,9 +80,6 @@ $conn->close();
                 </form>
             </div>
         </div>
-
-
-
         <script type="text/javascript">
             function F_Open_dialog() {
                 document.getElementById("btn_file").click();
@@ -160,7 +149,6 @@ $conn->close();
             });
             // @formatter:on
         </script>
-
         <script>
             // @formatter:off
             document.addEventListener("DOMContentLoaded", function() {
